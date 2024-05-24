@@ -12,7 +12,7 @@ export type Future<T> = {
 	IsPending: (self: Future<T>) -> boolean,
 }
 
-type TablePcall<T> = {
+export type TablePcall<T> = {
 	success: true,
 	value: T,
 } | {
