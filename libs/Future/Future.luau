@@ -1,4 +1,4 @@
-type Future<T> = {
+export type Future<T> = {
 	returnValue: T?,
 	complete: boolean,
 	callbacks: { thread | (T) -> ...unknown },
