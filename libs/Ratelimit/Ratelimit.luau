@@ -1,4 +1,4 @@
--- A regular rate limit, returning a boolean for whether a request is allowed or not.
+-- A regular rate limit factory, returning a rate limiter that returns a boolean for whether a request is allowed or not.
 local function new<T>(count: number, interval: number)
 	assert(count > 0 and interval > 0, "Count and interval must be >0 for rate limits.")
 	local limits: { [T]: number? } = {}
@@ -12,7 +12,8 @@ local function new<T>(count: number, interval: number)
 		limits[key] = currentCount + 1
 
 		task.delay(interval, function()
-			local newCount = assert(limits[key]) - 1
+			-- we know for sure that the limit is at least 1, otherwise this thread would not exist.
+			local newCount = (limits[key] :: number) - 1
 
 			-- Set to nil when 0 to prevent memory leaks.
 			limits[key] = if newCount > 0 then newCount else nil
