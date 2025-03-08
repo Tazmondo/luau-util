@@ -1,4 +1,4 @@
-type BinItem = Instance | RBXScriptConnection | () -> ...any
+export type BinItem = Instance | RBXScriptConnection | () -> ...any
 
 export type Add = <T>(Item: T & BinItem) -> T
 export type Clear = () -> ()
