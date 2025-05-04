@@ -1,6 +1,6 @@
 [package]
 name = "tazmondo/bin"
-version = "1.0.4"
+version = "1.1.1"
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
 
