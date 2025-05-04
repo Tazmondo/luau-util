@@ -3,7 +3,7 @@ export type BinItem = Instance | RBXScriptConnection | () -> ...any
 export type Add = <T>(Item: T & BinItem) -> T
 export type Clear = () -> ()
 
-return function()
+return function(): (Add, Clear)
 	local Bin: { BinItem } = {}
 
 	return function<T>(Item: T & BinItem)
